@@ -1,0 +1,117 @@
+/* SideHustleKits — brand: navy #17213A, amber #F5A623, teal #0E9C86 */
+:root{
+  --navy:#17213A; --amber:#F5A623; --teal:#0E9C86;
+  --ink:#1f2733; --muted:#5b6472; --paper:#FBFAF7; --line:#e8e4db; --card:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+h1,h2,h3{color:var(--navy);line-height:1.2;font-weight:800}
+h1{font-size:2.2rem;margin:.2em 0 .3em}
+h2{font-size:1.55rem;margin:1.4em 0 .5em}
+.muted{color:var(--muted)}
+
+/* header */
+header.site{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;
+  padding:12px 22px;gap:16px}
+header.site .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy);font-size:1.1rem}
+header.site .brand:hover{text-decoration:none}
+header.site nav{display:flex;gap:22px}
+header.site nav a{color:var(--navy);font-weight:600;font-size:.98rem}
+
+/* buttons */
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:700;font-size:1rem;border:2px solid transparent;cursor:pointer;transition:.15s}
+.btn.primary{background:var(--amber);color:var(--navy);box-shadow:0 6px 18px rgba(245,166,35,.28)}
+.btn.primary:hover{filter:brightness(1.05);text-decoration:none;transform:translateY(-1px)}
+.btn.ghost{background:transparent;border-color:var(--navy);color:var(--navy)}
+.btn.ghost:hover{background:var(--navy);color:#fff;text-decoration:none}
+
+/* hero */
+.hero{background:linear-gradient(155deg,#12203d 0%,#17213A 55%,#123a34 100%);color:#fff;padding:72px 0 64px;text-align:center}
+.hero .eyebrow{letter-spacing:3px;text-transform:uppercase;font-size:.8rem;color:var(--amber);font-weight:700;margin:0 0 14px}
+.hero h1{color:#fff;font-size:2.7rem;max-width:16ch;margin:0 auto .3em}
+.hero .sub{color:#d7e2e0;font-size:1.2rem;max-width:60ch;margin:0 auto 26px}
+.hctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero .btn.ghost{border-color:#fff;color:#fff}
+.hero .btn.ghost:hover{background:#fff;color:var(--navy)}
+
+/* sections */
+.section{padding:60px 0}
+.section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section .lead{color:var(--muted);font-size:1.1rem;margin:-.2em 0 1.6em}
+
+/* product grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;transition:.18s;color:var(--ink)}
+.card:hover{text-decoration:none;transform:translateY(-3px);box-shadow:0 14px 34px rgba(23,33,58,.12);border-color:#dcd6ca}
+.card .thumb{aspect-ratio:16/9;background:#f0ece3;overflow:hidden}
+.card .thumb img{width:100%;height:100%;object-fit:cover}
+.cbody{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.cat{display:inline-block;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:var(--teal);font-weight:800;margin-bottom:6px}
+.card h3{font-size:1.12rem;margin:0 0 6px}
+.card p{color:var(--muted);font-size:.95rem;margin:0 0 14px;flex:1}
+.crow{display:flex;align-items:center;justify-content:space-between}
+.price{font-weight:800;color:var(--navy);font-size:1.15rem}
+.go{color:var(--teal);font-weight:700;font-size:.9rem}
+
+/* blog list */
+.bloglist{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.bloglist li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.bloglist li a{font-weight:700;font-size:1.1rem;color:var(--navy)}
+.bloglist li span{display:block;color:var(--muted);font-size:.95rem;margin-top:4px}
+
+/* breadcrumbs */
+.crumbs{font-size:.85rem;color:var(--muted);margin:26px 0 10px}
+.crumbs a{color:var(--muted)}
+.crumbs span{color:var(--ink)}
+
+/* product page */
+.product{padding-bottom:60px}
+.pgrid{display:grid;grid-template-columns:1.05fr 1fr;gap:38px;align-items:start;margin:8px 0 40px}
+.pimg img{border-radius:14px;border:1px solid var(--line);box-shadow:0 12px 30px rgba(23,33,58,.10)}
+.pinfo .tag{font-size:1.15rem;color:var(--muted);margin:.2em 0 1em}
+.pprice{font-size:1.9rem;font-weight:800;color:var(--navy);margin:.2em 0 .6em}
+.pprice span{font-size:1rem;font-weight:600;color:var(--muted)}
+.pctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.fmt{font-size:.92rem;color:var(--muted);border-left:3px solid var(--amber);padding-left:12px}
+.pbody .lede{font-size:1.2rem;color:var(--ink)}
+ul.inside{padding-left:0;list-style:none;display:grid;gap:8px}
+ul.inside li{padding-left:30px;position:relative}
+ul.inside li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--teal);font-weight:900}
+.faq{border:1px solid var(--line);border-radius:10px;padding:2px 16px;margin:10px 0;background:#fff}
+.faq summary{cursor:pointer;font-weight:700;color:var(--navy);padding:12px 0}
+.faq p{margin:0 0 12px;color:var(--muted)}
+.endcta{margin:34px 0 0;display:flex;gap:12px;flex-wrap:wrap}
+
+/* blog post */
+.post h1{max-width:22ch}
+.post .lede{font-size:1.25rem;color:var(--muted);margin-bottom:1em}
+.post h2{margin-top:1.5em}
+.prodcta{display:flex;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:36px 0 10px}
+.prodcta img{width:150px;border-radius:10px;flex-shrink:0}
+.prodcta h3{margin:0 0 4px}
+.prodcta p{margin:0 0 12px;color:var(--muted)}
+
+/* footer */
+footer.site{background:var(--navy);color:#cdd6e0;padding:34px 0;margin-top:40px}
+footer.site p{margin:6px 0}
+footer.site a{color:#fff;text-decoration:underline}
+footer.site .muted{color:#95a2b5;font-size:.9rem}
+
+@media(max-width:760px){
+  body{font-size:16px}
+  .hero{padding:52px 0 44px}
+  .hero h1{font-size:2rem}
+  header.site nav{gap:14px;font-size:.9rem}
+  .pgrid{grid-template-columns:1fr;gap:22px}
+  .prodcta{flex-direction:column;text-align:center}
+  .prodcta img{width:120px}
+}

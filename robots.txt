@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://johnbonaventureoj.github.io/sidehustlekits/sitemap.xml
