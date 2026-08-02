@@ -34,8 +34,8 @@
   <div class="wrap">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#products">Products</a> / <span>ADHD Life-Admin Planner</span></nav>
     <div class="pgrid">
-      <div class="pimg"><img src="../assets/products/adhd-life-admin-planner.png" alt="ADHD Life-Admin Planner"></div>
-      <div class="pinfo">
+      <div class="pimg" data-reveal><img src="../assets/products/adhd-life-admin-planner.png" alt="ADHD Life-Admin Planner"></div>
+      <div class="pinfo" data-reveal>
         <span class="cat">Planners</span>
         <h1>ADHD Life-Admin Planner</h1>
         <p class="tag">A forgiving, undated planner that works WITH an ADHD brain — beat overwhelm and actually finish.</p>
@@ -44,7 +44,7 @@
         <p class="fmt">Instant download · 1 hyperlinked PDF · use on any tablet in GoodNotes/Notability or print · undated, reuse forever</p>
       </div>
     </div>
-    <div class="pbody narrow">
+    <div class="pbody narrow" data-reveal>
       <p class="lede">A planner that finally works with your ADHD brain, not against it. No broken streaks, no guilt — just simple, forgiving templates to beat overwhelm, start the hard thing, and actually finish. Undated and reusable: print or duplicate any page as often as you like.</p>
       <h2>What's inside</h2>
       <ul class="inside"><li>“The ONE Thing” daily page to beat decision paralysis</li><li>Brain Dump to empty your loud head onto the page</li><li>Task Triage — turn the pile into now / soon / someday / drop</li><li>Overwhelmed? A 4-step flow to the next tiny step</li><li>Weekly Reset, Routine Anchors and a forgiving Habit Tracker</li><li>Dopamine Menu, Focus & body-doubling Log, and a Win List</li><li>Monthly Focus and Notes pages</li></ul>
@@ -63,5 +63,31 @@
     <p class="muted">Also on <a href="https://www.etsy.com/shop/SideHustleKitsUK" rel="nofollow">Etsy</a> &amp; <a href="https://bonaventure5.gumroad.com" rel="nofollow">Gumroad</a>. &copy; 2026 SideHustleKits. All products are digital; nothing is shipped.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){ targets.forEach(function(e){ e.classList.add('in'); }); }
+  if(reduce || !('IntersectionObserver' in window)){ showAll(); }
+  else {
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(e){ io.observe(e); });
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ count(x.target); cu.unobserve(x.target); } });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-count]').forEach(function(e){ cu.observe(e); });
+    function count(el){
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+  }
+})();
+</script>
 </body>
 </html>

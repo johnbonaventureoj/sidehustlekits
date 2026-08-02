@@ -32,8 +32,8 @@
 <article class="post">
   <div class="wrap narrow">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#blog">Guides</a> / <span>The ADHD Planner That Actually Works (No Guilt, No Broken Streaks)</span></nav>
-    <h1>The ADHD Planner That Actually Works (No Guilt, No Broken Streaks)</h1>
-    <p class="lede">Why most planners fail ADHD brains, and the small design changes — one daily priority, brain dumps, task triage — that make a planner you&#x27;ll actually keep using.</p>
+    <h1 data-reveal>The ADHD Planner That Actually Works (No Guilt, No Broken Streaks)</h1>
+    <p class="lede" data-reveal>Why most planners fail ADHD brains, and the small design changes — one daily priority, brain dumps, task triage — that make a planner you&#x27;ll actually keep using.</p>
     <h2>Why normal planners fail ADHD brains</h2>
 <p>Standard planners assume you'll fill every box, keep every streak and remember to open them. For an ADHD brain that's a recipe for guilt and abandonment. The fix isn't more discipline — it's a planner designed around how the brain actually works.</p>
 <h2>One priority beats a long to-do list</h2>
@@ -61,5 +61,31 @@
     <p class="muted">Also on <a href="https://www.etsy.com/shop/SideHustleKitsUK" rel="nofollow">Etsy</a> &amp; <a href="https://bonaventure5.gumroad.com" rel="nofollow">Gumroad</a>. &copy; 2026 SideHustleKits. All products are digital; nothing is shipped.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){ targets.forEach(function(e){ e.classList.add('in'); }); }
+  if(reduce || !('IntersectionObserver' in window)){ showAll(); }
+  else {
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(e){ io.observe(e); });
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ count(x.target); cu.unobserve(x.target); } });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-count]').forEach(function(e){ cu.observe(e); });
+    function count(el){
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+  }
+})();
+</script>
 </body>
 </html>

@@ -34,8 +34,8 @@
   <div class="wrap">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#products">Products</a> / <span>Small Business Invoice &amp; Admin Kit</span></nav>
     <div class="pgrid">
-      <div class="pimg"><img src="../assets/products/invoice-admin-kit.png" alt="Small Business Invoice &amp; Admin Kit"></div>
-      <div class="pinfo">
+      <div class="pimg" data-reveal><img src="../assets/products/invoice-admin-kit.png" alt="Small Business Invoice &amp; Admin Kit"></div>
+      <div class="pinfo" data-reveal>
         <span class="cat">Business Kits</span>
         <h1>Small Business Invoice &amp; Admin Kit</h1>
         <p class="tag">Auto-calculating invoices, quotes, client &amp; expense trackers — plus contracts and payment-chasing scripts.</p>
@@ -44,7 +44,7 @@
         <p class="fmt">Instant download · Excel .xlsx (works in Google Sheets) + PDF templates</p>
       </div>
     </div>
-    <div class="pbody narrow">
+    <div class="pbody narrow" data-reveal>
       <p class="lede">Run the money side of your business without the headache. One smart spreadsheet creates professional invoices and quotes that calculate themselves, tracks who&#x27;s paid and who owes you, and logs your expenses by category. Plus ready-to-send contracts and polite-to-firm payment-chasing scripts.</p>
       <h2>What's inside</h2>
       <ul class="inside"><li>Invoice tab — totals, VAT and due dates calculate automatically</li><li>Quote tab — send professional estimates in minutes</li><li>Client Tracker — see total invoiced, paid and outstanding at a glance</li><li>Expense Log — category drop-downs with automatic totals</li><li>Simple service agreement / contract template</li><li>Onboarding, quote and offboarding email scripts</li><li>Payment-chasing scripts (gentle → firm)</li></ul>
@@ -63,5 +63,31 @@
     <p class="muted">Also on <a href="https://www.etsy.com/shop/SideHustleKitsUK" rel="nofollow">Etsy</a> &amp; <a href="https://bonaventure5.gumroad.com" rel="nofollow">Gumroad</a>. &copy; 2026 SideHustleKits. All products are digital; nothing is shipped.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){ targets.forEach(function(e){ e.classList.add('in'); }); }
+  if(reduce || !('IntersectionObserver' in window)){ showAll(); }
+  else {
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(e){ io.observe(e); });
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ count(x.target); cu.unobserve(x.target); } });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-count]').forEach(function(e){ cu.observe(e); });
+    function count(el){
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+  }
+})();
+</script>
 </body>
 </html>

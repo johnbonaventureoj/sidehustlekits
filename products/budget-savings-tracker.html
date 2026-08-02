@@ -34,8 +34,8 @@
   <div class="wrap">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#products">Products</a> / <span>Budget &amp; Savings Tracker 2026</span></nav>
     <div class="pgrid">
-      <div class="pimg"><img src="../assets/products/budget-savings-tracker.png" alt="Budget &amp; Savings Tracker 2026"></div>
-      <div class="pinfo">
+      <div class="pimg" data-reveal><img src="../assets/products/budget-savings-tracker.png" alt="Budget &amp; Savings Tracker 2026"></div>
+      <div class="pinfo" data-reveal>
         <span class="cat">Finance</span>
         <h1>Budget &amp; Savings Tracker 2026</h1>
         <p class="tag">One simple spreadsheet that tracks budget, spending, savings, debt &amp; net worth — automatically.</p>
@@ -44,7 +44,7 @@
         <p class="fmt">Instant download · 1 Excel .xlsx (8 connected tabs) · opens in Excel or Google Sheets</p>
       </div>
     </div>
-    <div class="pbody narrow">
+    <div class="pbody narrow" data-reveal>
       <p class="lede">Take control of your money with one simple, powerful spreadsheet. Everything updates automatically — no formulas to build, no accounting knowledge needed. Works in Microsoft Excel, Google Sheets (free), Apple Numbers and LibreOffice.</p>
       <h2>What's inside</h2>
       <ul class="inside"><li>Dashboard — income, spending, savings rate, net worth and a spending chart, all automatic</li><li>Monthly Budget — set a plan; “actual” pulls live from your transactions</li><li>Transactions — log spending with a category drop-down</li><li>Bills — never miss a payment</li><li>Savings Goals — visual progress bars</li><li>Debt Payoff — see totals and a plan to clear them</li><li>Net Worth — watch it grow month to month</li></ul>
@@ -63,5 +63,31 @@
     <p class="muted">Also on <a href="https://www.etsy.com/shop/SideHustleKitsUK" rel="nofollow">Etsy</a> &amp; <a href="https://bonaventure5.gumroad.com" rel="nofollow">Gumroad</a>. &copy; 2026 SideHustleKits. All products are digital; nothing is shipped.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){ targets.forEach(function(e){ e.classList.add('in'); }); }
+  if(reduce || !('IntersectionObserver' in window)){ showAll(); }
+  else {
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(e){ io.observe(e); });
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ count(x.target); cu.unobserve(x.target); } });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-count]').forEach(function(e){ cu.observe(e); });
+    function count(el){
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+  }
+})();
+</script>
 </body>
 </html>

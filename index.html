@@ -31,18 +31,24 @@
 
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow">Instant digital downloads · no subscription</p>
-    <h1>Time-saving digital kits for work &amp; life</h1>
-    <p class="sub">Planners, trackers, templates and AI prompt packs that save you hours — professionally designed, delivered instantly, yours forever.</p>
-    <div class="hctas"><a class="btn primary" href="#products">Browse products</a><a class="btn ghost" href="#blog">Read the guides</a></div>
+    <p class="eyebrow" data-reveal>Instant digital downloads · no subscription</p>
+    <h1 data-reveal>Time-saving digital kits for work &amp; life</h1>
+    <p class="sub" data-reveal>Planners, trackers, templates and AI prompt packs that save you hours — professionally designed, delivered instantly, yours forever.</p>
+    <div class="hctas" data-reveal><a class="btn primary" href="#products">Browse products</a><a class="btn ghost" href="#blog">Read the guides</a></div>
+    <div class="statstrip" data-reveal>
+      <div class="stat"><div class="num"><span data-count="10">10</span></div><div class="lbl">digital kits</div></div>
+      <div class="stat"><div class="num">£9+</div><div class="lbl">one-time price</div></div>
+      <div class="stat"><div class="num">0s</div><div class="lbl">instant delivery</div></div>
+      <div class="stat"><div class="num">∞</div><div class="lbl">yours forever</div></div>
+    </div>
   </div>
 </section>
 
 <section id="products" class="section">
   <div class="wrap">
-    <h2>Digital products</h2>
-    <p class="lead">Each kit is a one-time purchase, downloaded instantly. Buy on Gumroad or Etsy.</p>
-    <div class="grid">
+    <h2 data-reveal>Digital products</h2>
+    <p class="lead" data-reveal>Each kit is a one-time purchase, downloaded instantly. Buy on Gumroad or Etsy.</p>
+    <div class="grid reveal-group">
       <a class="card" href="products/2026-digital-planner.html">
         <div class="thumb"><img src="assets/products/2026-digital-planner.png" alt="2026 Digital Planner" loading="lazy"></div>
         <div class="cbody">
@@ -139,14 +145,14 @@
 
 <section id="blog" class="section alt">
   <div class="wrap">
-    <h2>Guides &amp; tips</h2>
-    <p class="lead">Practical, no-fluff guides — and the tools to act on them.</p>
-    <ul class="bloglist"><li><a href="blog/best-digital-planner-2026.html">The Best Digital Planner for 2026 (Hyperlinked, Undated &amp; Print-Ready)</a><span>How to choose a digital planner for 2026 that actually gets used — what hyperlinking, undated pages and GoodNotes support really mean, and a simple pick.</span></li><li><a href="blog/adhd-planner-that-actually-works.html">The ADHD Planner That Actually Works (No Guilt, No Broken Streaks)</a><span>Why most planners fail ADHD brains, and the small design changes — one daily priority, brain dumps, task triage — that make a planner you&#x27;ll actually keep using.</span></li><li><a href="blog/how-to-build-a-budget-in-10-minutes.html">How to Build a Budget in 10 Minutes (Free Spreadsheet Method)</a><span>A dead-simple way to build a monthly budget fast — the three numbers that matter, and how to make it update itself so you only do the work once.</span></li><li><a href="blog/best-chatgpt-prompts-everyday-life.html">The Best ChatGPT Prompts for Everyday Life (Copy &amp; Paste)</a><span>The prompt-writing trick that makes ChatGPT, Claude and Gemini far more useful, plus copy-paste examples for email, money, work and admin.</span></li></ul>
+    <h2 data-reveal>Guides &amp; tips</h2>
+    <p class="lead" data-reveal>Practical, no-fluff guides — and the tools to act on them.</p>
+    <ul class="bloglist reveal-group"><li><a href="blog/best-digital-planner-2026.html">The Best Digital Planner for 2026 (Hyperlinked, Undated &amp; Print-Ready)</a><span>How to choose a digital planner for 2026 that actually gets used — what hyperlinking, undated pages and GoodNotes support really mean, and a simple pick.</span></li><li><a href="blog/adhd-planner-that-actually-works.html">The ADHD Planner That Actually Works (No Guilt, No Broken Streaks)</a><span>Why most planners fail ADHD brains, and the small design changes — one daily priority, brain dumps, task triage — that make a planner you&#x27;ll actually keep using.</span></li><li><a href="blog/how-to-build-a-budget-in-10-minutes.html">How to Build a Budget in 10 Minutes (Free Spreadsheet Method)</a><span>A dead-simple way to build a monthly budget fast — the three numbers that matter, and how to make it update itself so you only do the work once.</span></li><li><a href="blog/best-chatgpt-prompts-everyday-life.html">The Best ChatGPT Prompts for Everyday Life (Copy &amp; Paste)</a><span>The prompt-writing trick that makes ChatGPT, Claude and Gemini far more useful, plus copy-paste examples for email, money, work and admin.</span></li></ul>
   </div>
 </section>
 
 <section id="about" class="section">
-  <div class="wrap narrow">
+  <div class="wrap narrow" data-reveal>
     <h2>About SideHustleKits</h2>
     <p>SideHustleKits makes practical digital products that give you time back: planners that actually get used, trackers that do the maths for you, and templates that skip the blank page. Everything is an instant download — no waiting, no shipping, no subscription. Buy once, keep it forever.</p>
   </div>
@@ -162,5 +168,31 @@
     <p class="muted">Also on <a href="https://www.etsy.com/shop/SideHustleKitsUK" rel="nofollow">Etsy</a> &amp; <a href="https://bonaventure5.gumroad.com" rel="nofollow">Gumroad</a>. &copy; 2026 SideHustleKits. All products are digital; nothing is shipped.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){ targets.forEach(function(e){ e.classList.add('in'); }); }
+  if(reduce || !('IntersectionObserver' in window)){ showAll(); }
+  else {
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(e){ io.observe(e); });
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ count(x.target); cu.unobserve(x.target); } });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-count]').forEach(function(e){ cu.observe(e); });
+    function count(el){
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+  }
+})();
+</script>
 </body>
 </html>

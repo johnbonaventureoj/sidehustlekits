@@ -34,8 +34,8 @@
   <div class="wrap">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#products">Products</a> / <span>Notion Life &amp; Business OS</span></nav>
     <div class="pgrid">
-      <div class="pimg"><img src="../assets/products/notion-life-business-os.png" alt="Notion Life &amp; Business OS"></div>
-      <div class="pinfo">
+      <div class="pimg" data-reveal><img src="../assets/products/notion-life-business-os.png" alt="Notion Life &amp; Business OS"></div>
+      <div class="pinfo" data-reveal>
         <span class="cat">AI &amp; Productivity</span>
         <h1>Notion Life &amp; Business OS</h1>
         <p class="tag">An all-in-one Notion workspace for tasks, projects, goals, habits, money &amp; content — import in 5 minutes.</p>
@@ -44,7 +44,7 @@
         <p class="fmt">Instant download · importable Notion pack (Markdown + CSV) + PDF setup guide</p>
       </div>
     </div>
-    <div class="pbody narrow">
+    <div class="pbody narrow" data-reveal>
       <p class="lede">Bring your whole life and business into one calm Notion home. A lean, ready-to-import workspace with connected databases for tasks, projects, goals, habits, finances, content and contacts — plus a home dashboard and weekly review. Deliberately simple, so you&#x27;ll actually use it. Notion is free.</p>
       <h2>What's inside</h2>
       <ul class="inside"><li>Home Dashboard — your one command centre</li><li>Tasks, Projects & Goals databases (board & calendar views)</li><li>Habits tracker and 10-minute Weekly Review page</li><li>Finances database — money in, money out, totals</li><li>Content Calendar for planning your posts</li><li>Contacts and Notes databases</li><li>5-minute setup guide with import steps</li></ul>
@@ -63,5 +63,31 @@
     <p class="muted">Also on <a href="https://www.etsy.com/shop/SideHustleKitsUK" rel="nofollow">Etsy</a> &amp; <a href="https://bonaventure5.gumroad.com" rel="nofollow">Gumroad</a>. &copy; 2026 SideHustleKits. All products are digital; nothing is shipped.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){ targets.forEach(function(e){ e.classList.add('in'); }); }
+  if(reduce || !('IntersectionObserver' in window)){ showAll(); }
+  else {
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(e){ io.observe(e); });
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ count(x.target); cu.unobserve(x.target); } });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-count]').forEach(function(e){ cu.observe(e); });
+    function count(el){
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+  }
+})();
+</script>
 </body>
 </html>

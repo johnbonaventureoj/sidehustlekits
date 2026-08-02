@@ -32,8 +32,8 @@
 <article class="post">
   <div class="wrap narrow">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#blog">Guides</a> / <span>The Best Digital Planner for 2026 (Hyperlinked, Undated &amp; Print-Ready)</span></nav>
-    <h1>The Best Digital Planner for 2026 (Hyperlinked, Undated &amp; Print-Ready)</h1>
-    <p class="lede">How to choose a digital planner for 2026 that actually gets used — what hyperlinking, undated pages and GoodNotes support really mean, and a simple pick.</p>
+    <h1 data-reveal>The Best Digital Planner for 2026 (Hyperlinked, Undated &amp; Print-Ready)</h1>
+    <p class="lede" data-reveal>How to choose a digital planner for 2026 that actually gets used — what hyperlinking, undated pages and GoodNotes support really mean, and a simple pick.</p>
     <h2>What makes a digital planner worth using?</h2>
 <p>Most planners get abandoned by February. The three things that keep a digital planner in daily use are simple: it must be <strong>hyperlinked</strong> (one tap to any page), <strong>undated</strong> (so a bad week doesn't waste printed dates), and it must <strong>work in the app you already use</strong> — usually GoodNotes, Notability or Samsung Notes.</p>
 <h2>Hyperlinked vs. scrolling</h2>
@@ -61,5 +61,31 @@
     <p class="muted">Also on <a href="https://www.etsy.com/shop/SideHustleKitsUK" rel="nofollow">Etsy</a> &amp; <a href="https://bonaventure5.gumroad.com" rel="nofollow">Gumroad</a>. &copy; 2026 SideHustleKits. All products are digital; nothing is shipped.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){ targets.forEach(function(e){ e.classList.add('in'); }); }
+  if(reduce || !('IntersectionObserver' in window)){ showAll(); }
+  else {
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(e){ io.observe(e); });
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ count(x.target); cu.unobserve(x.target); } });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-count]').forEach(function(e){ cu.observe(e); });
+    function count(el){
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+  }
+})();
+</script>
 </body>
 </html>

@@ -34,8 +34,8 @@
   <div class="wrap">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#products">Products</a> / <span>Wedding &amp; Event Planner + Printables</span></nav>
     <div class="pgrid">
-      <div class="pimg"><img src="../assets/products/wedding-event-printables.png" alt="Wedding &amp; Event Planner + Printables"></div>
-      <div class="pinfo">
+      <div class="pimg" data-reveal><img src="../assets/products/wedding-event-printables.png" alt="Wedding &amp; Event Planner + Printables"></div>
+      <div class="pinfo" data-reveal>
         <span class="cat">Printables</span>
         <h1>Wedding &amp; Event Planner + Printables</h1>
         <p class="tag">An elegant, print-ready wedding planning kit — checklists, budget, guest list, seating &amp; printable cards.</p>
@@ -44,7 +44,7 @@
         <p class="fmt">Instant download · print-ready PDFs (A4) · print as many as you like</p>
       </div>
     </div>
-    <div class="pbody narrow">
+    <div class="pbody narrow" data-reveal>
       <p class="lede">Plan your big day calmly and beautifully. An elegant, print-ready kit with a full countdown checklist, budget tracker, guest list, seating plan, day-of timeline and vendor contacts — plus matching printable cards (invitation, RSVP, thank you, table numbers and menu). Timeless blush, gold and sage design.</p>
       <h2>What's inside</h2>
       <ul class="inside"><li>12-months-to-1-week countdown checklist</li><li>Budget tracker (estimate · actual · balance)</li><li>Guest list with RSVP and meal choices</li><li>Seating plan template</li><li>Day-of timeline and vendor contacts sheet</li><li>Printable cards: invitation, RSVP, thank you, table numbers, menu</li><li>Elegant blush / gold / sage design, print at home or at a print shop</li></ul>
@@ -63,5 +63,31 @@
     <p class="muted">Also on <a href="https://www.etsy.com/shop/SideHustleKitsUK" rel="nofollow">Etsy</a> &amp; <a href="https://bonaventure5.gumroad.com" rel="nofollow">Gumroad</a>. &copy; 2026 SideHustleKits. All products are digital; nothing is shipped.</p>
   </div>
 </footer>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){ targets.forEach(function(e){ e.classList.add('in'); }); }
+  if(reduce || !('IntersectionObserver' in window)){ showAll(); }
+  else {
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+    },{threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    targets.forEach(function(e){ io.observe(e); });
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ count(x.target); cu.unobserve(x.target); } });
+    },{threshold:0.6});
+    document.querySelectorAll('[data-count]').forEach(function(e){ cu.observe(e); });
+    function count(el){
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+  }
+})();
+</script>
 </body>
 </html>

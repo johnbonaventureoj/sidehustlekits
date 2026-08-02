@@ -413,6 +413,32 @@ def page_shell(title, desc, canonical, body, depth=0, og_image=None, extra_head=
 {body}
 </main>
 {foot}
+<script>
+(function(){{
+  var d=document.documentElement; d.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('[data-reveal], .reveal-group');
+  function showAll(){{ targets.forEach(function(e){{ e.classList.add('in'); }}); }}
+  if(reduce || !('IntersectionObserver' in window)){{ showAll(); }}
+  else {{
+    var io=new IntersectionObserver(function(en){{
+      en.forEach(function(x){{ if(x.isIntersecting){{ x.target.classList.add('in'); io.unobserve(x.target); }} }});
+    }},{{threshold:0.12, rootMargin:'0px 0px -6% 0px'}});
+    targets.forEach(function(e){{ io.observe(e); }});
+    // count-up numbers
+    var cu=new IntersectionObserver(function(en){{
+      en.forEach(function(x){{ if(x.isIntersecting){{ count(x.target); cu.unobserve(x.target); }} }});
+    }},{{threshold:0.6}});
+    document.querySelectorAll('[data-count]').forEach(function(e){{ cu.observe(e); }});
+    function count(el){{
+      var t=parseInt(el.getAttribute('data-count'),10)||0, s=null, dur=1100;
+      function step(now){{ if(!s)s=now; var p=Math.min((now-s)/dur,1);
+        el.textContent=Math.round(p*t); if(p<1) requestAnimationFrame(step); }}
+      requestAnimationFrame(step);
+    }}
+  }}
+}})();
+</script>
 </body>
 </html>"""
 
@@ -477,6 +503,7 @@ def build():
     for b in BLOG:
         blogcards += f'<li><a href="blog/{b["slug"]}.html">{esc(b["title"])}</a><span>{esc(b["desc"])}</span></li>'
 
+    nproducts = len(PRODUCTS)
     org = json.dumps({
         "@context":"https://schema.org","@type":"Organization","name":"SideHustleKits",
         "url":BASE,"logo":f"{BASE}/assets/logo.png",
@@ -490,32 +517,38 @@ def build():
     body = f"""
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow">Instant digital downloads · no subscription</p>
-    <h1>Time-saving digital kits for work &amp; life</h1>
-    <p class="sub">Planners, trackers, templates and AI prompt packs that save you hours — professionally designed, delivered instantly, yours forever.</p>
-    <div class="hctas"><a class="btn primary" href="#products">Browse products</a><a class="btn ghost" href="#blog">Read the guides</a></div>
+    <p class="eyebrow" data-reveal>Instant digital downloads · no subscription</p>
+    <h1 data-reveal>Time-saving digital kits for work &amp; life</h1>
+    <p class="sub" data-reveal>Planners, trackers, templates and AI prompt packs that save you hours — professionally designed, delivered instantly, yours forever.</p>
+    <div class="hctas" data-reveal><a class="btn primary" href="#products">Browse products</a><a class="btn ghost" href="#blog">Read the guides</a></div>
+    <div class="statstrip" data-reveal>
+      <div class="stat"><div class="num"><span data-count="{nproducts}">{nproducts}</span></div><div class="lbl">digital kits</div></div>
+      <div class="stat"><div class="num">£9+</div><div class="lbl">one-time price</div></div>
+      <div class="stat"><div class="num">0s</div><div class="lbl">instant delivery</div></div>
+      <div class="stat"><div class="num">∞</div><div class="lbl">yours forever</div></div>
+    </div>
   </div>
 </section>
 
 <section id="products" class="section">
   <div class="wrap">
-    <h2>Digital products</h2>
-    <p class="lead">Each kit is a one-time purchase, downloaded instantly. Buy on Gumroad or Etsy.</p>
-    <div class="grid">{cards}
+    <h2 data-reveal>Digital products</h2>
+    <p class="lead" data-reveal>Each kit is a one-time purchase, downloaded instantly. Buy on Gumroad or Etsy.</p>
+    <div class="grid reveal-group">{cards}
     </div>
   </div>
 </section>
 
 <section id="blog" class="section alt">
   <div class="wrap">
-    <h2>Guides &amp; tips</h2>
-    <p class="lead">Practical, no-fluff guides — and the tools to act on them.</p>
-    <ul class="bloglist">{blogcards}</ul>
+    <h2 data-reveal>Guides &amp; tips</h2>
+    <p class="lead" data-reveal>Practical, no-fluff guides — and the tools to act on them.</p>
+    <ul class="bloglist reveal-group">{blogcards}</ul>
   </div>
 </section>
 
 <section id="about" class="section">
-  <div class="wrap narrow">
+  <div class="wrap narrow" data-reveal>
     <h2>About SideHustleKits</h2>
     <p>SideHustleKits makes practical digital products that give you time back: planners that actually get used, trackers that do the maths for you, and templates that skip the blank page. Everything is an instant download — no waiting, no shipping, no subscription. Buy once, keep it forever.</p>
   </div>
@@ -547,8 +580,8 @@ def build():
   <div class="wrap">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#products">Products</a> / <span>{esc(p['name'])}</span></nav>
     <div class="pgrid">
-      <div class="pimg"><img src="../assets/products/{p['slug']}.png" alt="{esc(p['name'])}"></div>
-      <div class="pinfo">
+      <div class="pimg" data-reveal><img src="../assets/products/{p['slug']}.png" alt="{esc(p['name'])}"></div>
+      <div class="pinfo" data-reveal>
         <span class="cat">{esc(p['cat'])}</span>
         <h1>{esc(p['name'])}</h1>
         <p class="tag">{esc(p['tagline'])}</p>
@@ -557,7 +590,7 @@ def build():
         <p class="fmt">{esc(p['format'])}</p>
       </div>
     </div>
-    <div class="pbody narrow">
+    <div class="pbody narrow" data-reveal>
       <p class="lede">{esc(p['lede'])}</p>
       <h2>What's inside</h2>
       <ul class="inside">{inside}</ul>
@@ -603,8 +636,8 @@ def build():
 <article class="post">
   <div class="wrap narrow">
     <nav class="crumbs"><a href="../index.html">Home</a> / <a href="../index.html#blog">Guides</a> / <span>{esc(b['title'])}</span></nav>
-    <h1>{esc(b['title'])}</h1>
-    <p class="lede">{esc(b['desc'])}</p>
+    <h1 data-reveal>{esc(b['title'])}</h1>
+    <p class="lede" data-reveal>{esc(b['desc'])}</p>
     {secs}
     {cta}
   </div>

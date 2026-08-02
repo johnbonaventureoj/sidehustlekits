@@ -114,4 +114,69 @@ footer.site .muted{color:#95a2b5;font-size:.9rem}
   .pgrid{grid-template-columns:1fr;gap:22px}
   .prodcta{flex-direction:column;text-align:center}
   .prodcta img{width:120px}
+  .statstrip{gap:14px}
+}
+
+/* ============================================================ MOTION */
+/* Scroll-reveal — hidden only when JS is on, so no-JS still shows everything */
+html.js [data-reveal]{opacity:0;transform:translateY(26px);
+  transition:opacity .7s cubic-bezier(.16,.84,.44,1), transform .7s cubic-bezier(.16,.84,.44,1)}
+html.js [data-reveal].in{opacity:1;transform:none}
+/* staggered groups (product grid, blog list) */
+html.js .reveal-group > *{opacity:0;transform:translateY(28px);
+  transition:opacity .6s cubic-bezier(.16,.84,.44,1), transform .6s cubic-bezier(.16,.84,.44,1)}
+html.js .reveal-group.in > *{opacity:1;transform:none}
+html.js .reveal-group.in > *:nth-child(1){transition-delay:.04s}
+html.js .reveal-group.in > *:nth-child(2){transition-delay:.10s}
+html.js .reveal-group.in > *:nth-child(3){transition-delay:.16s}
+html.js .reveal-group.in > *:nth-child(4){transition-delay:.22s}
+html.js .reveal-group.in > *:nth-child(5){transition-delay:.28s}
+html.js .reveal-group.in > *:nth-child(6){transition-delay:.34s}
+html.js .reveal-group.in > *:nth-child(7){transition-delay:.40s}
+html.js .reveal-group.in > *:nth-child(8){transition-delay:.46s}
+html.js .reveal-group.in > *:nth-child(9){transition-delay:.52s}
+html.js .reveal-group.in > *:nth-child(n+10){transition-delay:.58s}
+
+/* Hero: slow aurora drift + soft floating glows */
+.hero{position:relative;overflow:hidden;background:linear-gradient(155deg,#12203d 0%,#17213A 55%,#123a34 100%);background-size:200% 200%;animation:aurora 18s ease-in-out infinite}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;pointer-events:none;z-index:0}
+.hero::before{width:420px;height:420px;background:radial-gradient(circle,#0E9C86,transparent 70%);top:-120px;left:-80px;animation:float1 14s ease-in-out infinite}
+.hero::after{width:380px;height:380px;background:radial-gradient(circle,#F5A623,transparent 70%);bottom:-140px;right:-60px;opacity:.32;animation:float2 17s ease-in-out infinite}
+.hero .wrap{position:relative;z-index:1}
+@keyframes aurora{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-36px,-26px)}}
+
+/* Primary button — sheen sweep on hover */
+.btn.primary{position:relative;overflow:hidden}
+.btn.primary::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);transition:left .6s ease}
+.btn.primary:hover::after{left:140%}
+/* Hero CTA gentle attention pulse */
+.hero .btn.primary{animation:pulse 2.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 6px 18px rgba(245,166,35,.28)}50%{box-shadow:0 6px 26px rgba(245,166,35,.55)}}
+
+/* Card — image zoom + arrow nudge on hover */
+.card .thumb img{transition:transform .5s cubic-bezier(.16,.84,.44,1)}
+.card:hover .thumb img{transform:scale(1.06)}
+.card .go{transition:transform .25s ease}
+.card:hover .go{transform:translateX(4px)}
+
+/* Stat strip */
+.statstrip{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;margin-top:34px}
+.stat{text-align:center;min-width:120px}
+.stat .num{font-size:2.1rem;font-weight:800;color:var(--amber);line-height:1}
+.stat .lbl{font-size:.9rem;color:#d7e2e0;margin-top:4px;letter-spacing:.3px}
+
+/* Product image reveal + subtle hover tilt */
+.pimg img{transition:transform .5s cubic-bezier(.16,.84,.44,1), box-shadow .5s ease}
+.pimg img:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 20px 44px rgba(23,33,58,.18)}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  html.js [data-reveal],
+  html.js .reveal-group > *{opacity:1 !important;transform:none !important;transition:none !important}
+  .hero,.hero::before,.hero::after,.hero .btn.primary{animation:none !important}
+  .btn.primary::after{display:none}
+  *{transition:none !important}
 }
