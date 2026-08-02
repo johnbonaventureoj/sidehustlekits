@@ -187,7 +187,7 @@ PRODUCTS = [
         keywords=["cv template","resume template","ats resume","word cv template","google docs resume","professional cv template uk"],
         img=os.path.join(EPROOT,"05_Resume_CV_Template_Pack","cover.png"),
         gumroad="https://bonaventure5.gumroad.com/l/ytvvb",
-        etsy="",
+        etsy="https://www.etsy.com/listing/4548762226",
         lede="Land more interviews with clean, ATS-friendly templates that actually get read. Three professionally designed resume/CV layouts, a matching cover letter, and a plain-English guide to beating the applicant tracking systems that auto-reject good candidates. Fully editable in Microsoft Word or free Google Docs.",
         inside=[
             "ATS Classic template — the safest choice for online job portals",
@@ -214,7 +214,7 @@ PRODUCTS = [
         keywords=["invoice template uk","excel invoice template","small business invoice","quote template","expense tracker","freelancer invoice"],
         img=os.path.join(EPROOT,"06_Invoice_Admin_Kit","cover.png"),
         gumroad="https://bonaventure5.gumroad.com/l/xllcfa",
-        etsy="",
+        etsy="https://www.etsy.com/listing/4548763244",
         lede="Run the money side of your business without the headache. One smart spreadsheet creates professional invoices and quotes that calculate themselves, tracks who's paid and who owes you, and logs your expenses by category. Plus ready-to-send contracts and polite-to-firm payment-chasing scripts.",
         inside=[
             "Invoice tab — totals, VAT and due dates calculate automatically",
@@ -241,7 +241,7 @@ PRODUCTS = [
         keywords=["notion template","notion life os","notion planner","notion business template","notion dashboard","all in one notion template"],
         img=os.path.join(EPROOT,"07_Notion_Life_Business_OS","cover.png"),
         gumroad="https://bonaventure5.gumroad.com/l/zctna",
-        etsy="",
+        etsy="https://www.etsy.com/listing/4548749829",
         lede="Bring your whole life and business into one calm Notion home. A lean, ready-to-import workspace with connected databases for tasks, projects, goals, habits, finances, content and contacts — plus a home dashboard and weekly review. Deliberately simple, so you'll actually use it. Notion is free.",
         inside=[
             "Home Dashboard — your one command centre",
@@ -268,7 +268,7 @@ PRODUCTS = [
         keywords=["wedding planner printable","wedding checklist","wedding budget template","seating chart template","printable wedding invitation","wedding planning kit"],
         img=os.path.join(EPROOT,"08_Wedding_Event_Printables","cover.png"),
         gumroad="https://bonaventure5.gumroad.com/l/iiqhpc",
-        etsy="",
+        etsy="https://www.etsy.com/listing/4548750289",
         lede="Plan your big day calmly and beautifully. An elegant, print-ready kit with a full countdown checklist, budget tracker, guest list, seating plan, day-of timeline and vendor contacts — plus matching printable cards (invitation, RSVP, thank you, table numbers and menu). Timeless blush, gold and sage design.",
         inside=[
             "12-months-to-1-week countdown checklist",
