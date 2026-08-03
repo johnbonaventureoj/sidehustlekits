@@ -117,6 +117,18 @@ footer.site .muted{color:#95a2b5;font-size:.9rem}
   .statstrip{gap:14px}
 }
 
+/* lead magnet banner */
+.leadmag{padding:36px 0 8px}
+.lm-card{background:linear-gradient(150deg,#17213A,#12203d 60%,#0E9C86 150%);color:#fff;border-radius:18px;
+  padding:30px 34px;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+  box-shadow:0 14px 34px rgba(23,33,58,.18)}
+.lm-badge{display:inline-block;background:var(--amber);color:var(--navy);font-weight:800;font-size:.72rem;
+  letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:10px}
+.lm-text h2{color:#fff;margin:0 0 6px;font-size:1.5rem}
+.lm-text p{color:#d7e2e0;margin:0;max-width:60ch;font-size:1rem}
+.lm-card .btn.primary{white-space:nowrap;flex-shrink:0}
+@media(max-width:760px){ .lm-card{flex-direction:column;text-align:center;align-items:center} }
+
 /* ============================================================ MOTION */
 /* Scroll-reveal — hidden only when JS is on, so no-JS still shows everything */
 html.js [data-reveal]{opacity:0;transform:translateY(26px);

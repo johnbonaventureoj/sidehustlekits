@@ -530,6 +530,19 @@ def build():
   </div>
 </section>
 
+<section class="leadmag" data-reveal>
+  <div class="wrap">
+    <div class="lm-card">
+      <div class="lm-text">
+        <span class="lm-badge">Free download</span>
+        <h2>Get the free Life-Admin Starter Kit</h2>
+        <p>5 genuinely useful pages — a 10-minute Sunday reset, your money in 5 numbers, 10 time-saving AI prompts, and a kinder way to get things done. No strings.</p>
+      </div>
+      <a class="btn primary" href="https://bonaventure5.gumroad.com/l/dwgfva" rel="nofollow">Download it free &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <section id="products" class="section">
   <div class="wrap">
     <h2 data-reveal>Digital products</h2>
