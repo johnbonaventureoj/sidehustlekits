@@ -286,6 +286,33 @@ PRODUCTS = [
             ("Are the cards editable?","They're print-and-write printables with elegant placeholders — print, then add your details by hand or fill before printing.")
         ],
     ),
+    dict(
+        slug="birthday-party-printables",
+        name="Birthday & Party Printables Kit",
+        cat="Printables",
+        price="12",
+        tagline="Plan the party and keep the kids busy — planner, invitations, signs and 6 printable party games.",
+        keywords=["birthday party printables","printable party games","party planning checklist","printable birthday invitation","party bingo printable","kids party games printable"],
+        img=os.path.join(EPROOT,"09_Birthday_Party_Printables","cover.png"),
+        gumroad="https://bonaventure5.gumroad.com/l/bzymvk",
+        etsy="",
+        lede="Everything you need to plan a birthday party without losing your mind — and six printable games that actually keep the kids busy. 20 print-ready pages covering the planning, the paper (invitations, signs, food labels, bunting) and a whole games pack. Undated and reusable, so it works for every birthday, every year.",
+        inside=[
+            "6-week countdown checklist, from booking the venue to party bags",
+            "Budget tracker, guest list with RSVP and allergies, shopping list",
+            "Food & drink planner and a party-day timeline",
+            "Two invitations, RSVP and thank-you cards",
+            "Food tent labels (including 'contains nuts' and 'gluten free') and blanks",
+            "A4/A3 welcome sign and HAPPY BDAY bunting flags",
+            "Games pack: 2 bingo cards, scavenger hunt, quiz, Would You Rather, 6 game stations, prize certificates",
+        ],
+        format="Instant download · 3 print-ready PDFs (A4) in one zip · print as many as you like",
+        faqs=[
+            ("Is this just for kids' parties?","The games lean younger, but the planner, invitations, signs and labels work just as well for adult birthdays, baby showers and small celebrations."),
+            ("Can I print it at home?","Yes — everything is A4 and print-ready. The welcome sign also scales up to A3 at a print shop."),
+            ("Is it dated?","No. It's undated and reusable, so you can use the same kit for every birthday."),
+        ],
+    ),
 ]
 
 # ---------------------------------------------------------------- BLOG (SEO content that ranks + funnels)
